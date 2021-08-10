@@ -15,7 +15,7 @@ public class Cab {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "cab_Sequence")
-    @SequenceGenerator(name = "cab_Sequence", sequenceName = "CAB_SEQ",initialValue = 10001)
+    @SequenceGenerator(name = "cab_Sequence", sequenceName = "CAB_SEQ",initialValue = 1101)
 	private int cabId;
 	private String carType;
 	private float perKmRate;

@@ -14,5 +14,5 @@ public interface ICustomerService {
 	public List<Customer>viewCustomers();
 	public Customer viewCustomer(long customerId);
 	public Customer validateCustomer(String username, String password);
-	public String LoginUser(Customer customer);
+	public String loginUser(Customer customer);
 }

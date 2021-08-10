@@ -95,7 +95,7 @@ public class CustomerServiceTest {
 			  customerList.add(customer);
 			  String result = "Rishi is logged in";
 			  when(customerRepo.findAll()).thenReturn(customerList);
-				assertEquals(result, customerService.LoginUser(customer));
+				assertEquals(result, customerService.loginUser(customer));
 		  }
 		
 	/*

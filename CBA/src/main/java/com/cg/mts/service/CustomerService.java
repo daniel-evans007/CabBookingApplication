@@ -24,36 +24,21 @@ public class CustomerService implements ICustomerService{
 
 	@Override
 	public String insertCustomer(Customer customer) {
-		int check = 0;
-		List<Customer> findAllCustomer = customerRepository.findAll();
-		for(int i=0; i<findAllCustomer.size(); i++) {
-			if(findAllCustomer.get(i).getEmail().equals(customer.getEmail())){
-				check = 1;
-				break;
-			}
-		}
 		
-		if(check == 0) { 
+		if(customerRepository.findByEmail(customer.getEmail()) >0){
+			return customer.getEmail()+" already exists.";
+		}else {
 			this.customerRepository.save(customer); 
-			return customer.getUsername()+"'s account is created."; 
-		}else { 
-			return customer.getEmail()+" already exists"; 
+			return "Customer ID: "+customer.getCustomerId()+"\n"+"Customer Name: "+customer.getUsername()+"\n"+"Account created."; 
 		}
 	}
 
-	public String LoginUser(Customer customer) {
-		List<Customer> ad = customerRepository.findAll();
-		String user = "";
-		String result=null;
-		for(int i=0; i<ad.size(); i++) {
-			if(ad.get(i).getEmail().equals(customer.getEmail()) && ad.get(i).getPassword().equals(customer.getPassword())) {
-				flag = 1;
-				user = ad.get(i).getUsername();
-				break;
-			}	
-		}
-		if(flag == 1) {
-			result = user+" is logged in";
+	public String loginUser(Customer customer) {
+		String result="";
+		
+		if(customerRepository.findByEmailAndPassword(customer.getEmail(), customer.getPassword()) == 1) {
+			flag = 1;
+			result = "You are logged in";
 		}else {
 			result = "Username or Password is wrong.";
 		}
@@ -100,8 +85,7 @@ public class CustomerService implements ICustomerService{
 	public Customer viewCustomer(long customerId) {
 		// TODO Auto-generated method stub
 		if(flag == 1) {
-			Customer customer = customerRepository.findById(customerId).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
-			return customer;
+			return customerRepository.findById(customerId).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
 		}else {
 			throw new UserNotLoginException();
 		}

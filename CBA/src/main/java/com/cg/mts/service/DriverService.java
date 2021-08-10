@@ -1,6 +1,5 @@
 package com.cg.mts.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import com.cg.mts.exception.UserNotLoginException;
 import com.cg.mts.repository.IDriverRepository;
 
 /**
- * @author Srijit
+ * @author Shrijit
  *
  */
 @Service
@@ -26,34 +25,21 @@ public class DriverService implements IDriverService{
 	@Override
 	public String insertDriver(Driver driver) {
 		// TODO Auto-generated method stub
-		int check = 0;
-		List<Driver> findAllDriver = iDriverRepository.findAll();
-		for(int i=0; i<findAllDriver.size(); i++) {
-			if(findAllDriver.get(i).getEmail().equals(driver.getEmail())) {
-				check = 1;
-				break;
-			}
-		}
-		
-		if(check == 0) { 
-			this.iDriverRepository.save(driver); 
-			return driver.getUsername()+"'s account is created."; 
-		}else { 
+
+		if(iDriverRepository.findByEmail(driver.getEmail()) >0){
 			return driver.getEmail()+" already exists.";
+		}else {
+			this.iDriverRepository.save(driver); 
+			return "Driver ID: "+driver.getDriverId()+"\n"+"Driver Name: "+driver.getUsername()+"\n"+"Account created."; 
 		}
 	}
 
-	public String LoginDriver(Driver driver) {
-		List<Driver> ad = iDriverRepository.findAll();
-		String result=null;
-		for(int i=0; i<ad.size(); i++) {
-			if(ad.get(i).getUsername().equals(driver.getUsername()) && ad.get(i).getPassword().equals(driver.getPassword())) {
-				flag = 1;
-				break;
-			}
-		}
-		if(flag == 1) {
-			result = driver.getUsername()+" is logged in";
+	public String loginDriver(Driver driver) {
+		String result="";
+		
+		if(iDriverRepository.findByEmailAndPassword(driver.getEmail(), driver.getPassword()) == 1) {
+			flag = 1;
+			result = "You are logged in";
 		}else {
 			result = "Username or Password is wrong.";
 		}
@@ -95,14 +81,7 @@ public class DriverService implements IDriverService{
 	public List<Driver> viewBestDrivers() {
 		// TODO Auto-generated method stub
 		if(flag == 1) {
-			List<Driver> findAllDriver = iDriverRepository.findAll();
-			List<Driver> driverList = new ArrayList<Driver>();
-			for(int i=0; i<findAllDriver.size(); i++) {
-				if(findAllDriver.get(i).getRating() >= 4.5) {
-					driverList.add(findAllDriver.get(i));
-				}
-			}
-			return driverList;
+			return iDriverRepository.findByRating(4.5f);
 		}else {
 			throw new UserNotLoginException();
 		}

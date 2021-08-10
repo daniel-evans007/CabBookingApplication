@@ -14,5 +14,5 @@ public interface IDriverService {
 	public ResponseEntity<Driver> deleteDriver(long driverId);
 	public List<Driver>viewBestDrivers();
 	public Driver viewDriver(long driverId);
-	public String LoginDriver(Driver driver);
+	public String loginDriver(Driver driver);
 }

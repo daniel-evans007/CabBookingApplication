@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 /**
- * @author Srijit
+ * @author Shrijit
  *
  */
 @Entity

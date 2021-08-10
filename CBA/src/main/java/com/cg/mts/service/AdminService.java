@@ -36,40 +36,20 @@ public class AdminService implements IAdminService{
 	@Override
 	public String insertAdmin(Admin admin) {
 		// TODO Auto-generated method stub
-		int check = 0;
-		List<Admin> findAllAdmin = adminRepository.findAll();
-		String email = "";
-		for(int i=0; i<findAllAdmin.size(); i++) {
-			if(findAllAdmin.get(i).getEmail().equals(admin.getEmail())) {
-				check = 1;
-				email = findAllAdmin.get(i).getEmail();
-				break;
-			}
-		}
-		
-		if(check == 0) { 
+		if(adminRepository.findByEmail(admin.getEmail()) >0){
+			return admin.getEmail()+" already exists.";
+		}else {
 			this.adminRepository.save(admin); 
-			return admin.getUsername()+"'s account is created"; 
-		}else { 
-			  return email+" already exists."; 
+			return "Driver ID: "+admin.getAdminId()+"\n"+"Driver Name: "+admin.getUsername()+"\n"+"Account created."; 
 		}
-		 
-		//return this.adminRepository.save(admin);
 	}
 	
 	public String LoginAdmin(Admin admin) {
-		List<Admin> ad = adminRepository.findAll();
-		String name = "";
-		String result=null;
-		for(int i=0; i<ad.size(); i++) {
-			if(ad.get(i).getEmail().equals(admin.getEmail()) && ad.get(i).getPassword().equals(admin.getPassword())) {
-				flag = 1;
-				name = ad.get(i).getUsername();
-				break;
-			}
-		}
-		if(flag == 1) {
-			result = name +" is logged in";
+		String result="";
+		
+		if(adminRepository.findByEmailAndPassword(admin.getEmail(), admin.getPassword()) == 1) {
+			flag = 1;
+			result = "You are logged in";
 		}else {
 			result = "Username or Password is wrong.";
 		}

@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 /**
- * @author Srijit
+ * @author Shrijit
  *
  */
 @RestController
@@ -40,11 +40,11 @@ public class DriverController {
 	@PostMapping("/login")
 	public String driverLogin(@ApiParam(value = "Driver login", required = true) @RequestBody Driver driver) {
 		
-		return driverService.LoginDriver(driver);
+		return driverService.loginDriver(driver);
 	}
 	
 	@ApiOperation(value = "Insert a Driver")
-	@PostMapping("/inesertdriver")
+	@PostMapping("/insertdriver")
 	public String insertDriver(@ApiParam(value = "Storing Drivers in the database", required = true) @RequestBody Driver driver) {
 		// TODO Auto-generated method stub
 		return driverService.insertDriver(driver);

@@ -40,7 +40,7 @@ public class CustomerController {
 	@PostMapping("/login")
 	public String userLogin(@ApiParam(value = "Customer login", required = true) @RequestBody Customer customer) {
 		
-		return customerService.LoginUser(customer);
+		return customerService.loginUser(customer);
 	}
 	
 	@ApiOperation(value = "Insert a Customer")

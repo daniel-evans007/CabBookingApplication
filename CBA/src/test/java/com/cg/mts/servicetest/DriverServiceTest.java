@@ -57,7 +57,7 @@ public class DriverServiceTest {
 		  driverList.add(driver);
 		  String result = "mukesh is logged in";
 		  when(driverRepo.findAll()).thenReturn(driverList);
-			assertEquals(result, driverService.LoginDriver(driver));
+			assertEquals(result, driverService.loginDriver(driver));
 		  
 	  }
 	 

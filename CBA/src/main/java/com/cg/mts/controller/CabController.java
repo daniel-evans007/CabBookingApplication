@@ -52,8 +52,8 @@ public class CabController {
 	}
 	
 	@ApiOperation(value = "Get cab By cab type")
-	@GetMapping("/viewcabstype/{id}")
-	public List<Cab> viewCabsOfType(@ApiParam(value = "Cab details will be retrieved", required = true) @PathVariable("id")String type) {
+	@GetMapping("/viewcabstype/{carType}")
+	public List<Cab> viewCabsOfType(@ApiParam(value = "Cab details will be retrieved", required = true) @PathVariable("carType")String type) {
 		// TODO Auto-generated method stub
 		return iCabService.viewCabsOfType(type);
 	}
