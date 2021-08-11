@@ -25,7 +25,7 @@ public class CustomerService implements ICustomerService{
 	@Override
 	public String insertCustomer(Customer customer) {
 		
-		if(customerRepository.findByEmail(customer.getEmail()) >0){
+		if(customerRepository.findByEmail(customer.getEmail()) > 0){
 			return customer.getEmail()+" already exists.";
 		}else {
 			this.customerRepository.save(customer); 
