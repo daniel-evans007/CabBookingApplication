@@ -12,6 +12,5 @@ import com.cg.mts.entities.TripBooking;
 @Repository
 public interface ITripBookingRepository extends JpaRepository<TripBooking, Integer>{
 
-//	@Query("select trip from TripBooking trip where trip.cabId =: cabId")
-//	List<TripBooking> findByCabId(@Param("cabId") int cabId);
+
 } 

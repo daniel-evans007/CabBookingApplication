@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import io.swagger.annotations.ApiResponses;
  * @author Anirban
  *
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/customer")
 @Api(value="Customer Operations")
@@ -37,15 +39,21 @@ public class CustomerController {
 	private ICustomerService customerService;
 	
 	@ApiOperation(value = "Customer Login")
+	
+	@GetMapping("/getMsg")
+	public String getMessage() {
+		return "Hello";
+	}
+	
 	@PostMapping("/login")
-	public String userLogin(@ApiParam(value = "Customer login", required = true) @RequestBody Customer customer) {
+	public Customer userLogin(@ApiParam(value = "Customer login", required = true) @RequestBody Customer customer) {
 		
 		return customerService.loginUser(customer);
 	}
 	
 	@ApiOperation(value = "Insert a Customer")
 	@PostMapping("/insertcustomer")
-	public String insertCustomer(@ApiParam(value = "Storing Customers in the database", required = true) @RequestBody Customer customer) {
+	public Customer insertCustomer(@ApiParam(value = "Storing Customers in the database", required = true) @RequestBody Customer customer) {
 		return customerService.insertCustomer(customer);
 	}
 	

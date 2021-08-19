@@ -10,8 +10,8 @@ import com.cg.mts.entities.TripBooking;
 
 @Service
 public interface IAdminService {
-	public String LoginAdmin(Admin admin);
-	public String insertAdmin(Admin admin);
+	public Admin LoginAdmin(Admin admin);
+	public Admin insertAdmin(Admin admin);
 	public Admin updateAdmin(Admin admin,long adminId);
 	public ResponseEntity<Admin> deleteAdmin(long adminId);
 	public List<TripBooking>getAllTrips();

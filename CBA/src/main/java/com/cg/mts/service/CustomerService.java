@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Customer;
+import com.cg.mts.exception.CredentialMissmatchException;
 import com.cg.mts.exception.CustomerNotFoundException;
 import com.cg.mts.exception.UserNotLoginException;
 import com.cg.mts.repository.ICustomerRepository;
@@ -23,26 +24,24 @@ public class CustomerService implements ICustomerService{
 	static int flag=0;
 
 	@Override
-	public String insertCustomer(Customer customer) {
+	public Customer insertCustomer(Customer customer) {
 		
-		if(customerRepository.findByEmail(customer.getEmail()) > 0){
-			return customer.getEmail()+" already exists.";
+		if(customerRepository.findByEmail(customer.getEmail()) >0){
+			throw new CredentialMissmatchException();
 		}else {
 			this.customerRepository.save(customer); 
-			return "Customer ID: "+customer.getCustomerId()+"\n"+"Customer Name: "+customer.getUsername()+"\n"+"Account created."; 
+			return customer; 
 		}
 	}
 
-	public String loginUser(Customer customer) {
-		String result="";
+	public Customer loginUser(Customer customer) {
 		
 		if(customerRepository.findByEmailAndPassword(customer.getEmail(), customer.getPassword()) == 1) {
 			flag = 1;
-			result = "You are logged in";
+			return customerRepository.findByEmailCustomer(customer.getEmail());
 		}else {
-			result = "Username or Password is wrong.";
+			throw new CredentialMissmatchException();
 		}
-		return result;
 	}
 	
 	@Override

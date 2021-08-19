@@ -16,4 +16,14 @@ public class ExceptionController {
 	public ResponseEntity<Object> CabNotFound(CabNotFoundException exception){
 		return ResponseEntity.ok("Cab not found");
 	}
+	
+	@ExceptionHandler(value = CredentialMissmatchException.class)
+	public ResponseEntity<Object> CabNotFound(CredentialMissmatchException exception){
+		return ResponseEntity.ok("Email or Password is wrong.");
+	}
+	
+	@ExceptionHandler(value = UserExistException.class)
+	public ResponseEntity<Object> CabNotFound(UserExistException exception){
+		return ResponseEntity.ok("User already exists.");
+	}
 }

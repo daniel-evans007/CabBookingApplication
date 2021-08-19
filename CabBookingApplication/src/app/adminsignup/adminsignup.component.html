@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <div class="title-text">
+        <div class="title signup">Signup</div>
+    </div>
+    <div class="form-inner">
+        <form action="#" class="signup" #signupForm="ngForm" (ngSubmit)="registerAdmin()">
+            <div class="field">
+                <input type="text" placeholder="Name" required name="name" #name="ngModel" [(ngModel)]="admin.name">
+            </div>
+            <div class="field">
+                <input type="email" placeholder="Email Address" required name="email" #email="ngModel" [(ngModel)]="admin.email">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Mobile Number" required name="mobile" #number="ngModel" [(ngModel)]="admin.mobile">
+            </div>
+            <div class="field">
+                <input type="password" placeholder="Password" required name="password" #password="ngModel" [(ngModel)]="admin.password">
+            </div>
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+</div>

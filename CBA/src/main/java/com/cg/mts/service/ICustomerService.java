@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.cg.mts.entities.Customer;
 @Service
 public interface ICustomerService {
-	public String insertCustomer(Customer customer);
+	public Customer insertCustomer(Customer customer);
 	public Customer updateCustomer(Customer customer,long id);
 	public ResponseEntity<Customer> deleteCustomer(long id);
 	public List<Customer>viewCustomers();
 	public Customer viewCustomer(long customerId);
 	public Customer validateCustomer(String username, String password);
-	public String loginUser(Customer customer);
+	public Customer loginUser(Customer customer);
 }

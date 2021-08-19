@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="title-text">
+        <div class="title login">Login</div>
+    </div>
+    <div class="form-inner">
+        <form action=" " class="login" #loginForm="ngForm" (ngSubmit)="loginAdmin()">
+            <small class="text-danger">{{msg}}</small>
+            <div class="field">
+                <input type="text" name="email" placeholder="Email Address" required #email="ngModel" [(ngModel)]="admin.email" [class.is-invalid]="email.invalid && email.touched">
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder="Password" required  [(ngModel)]="admin.password">
+            </div>
+            <div class="pass-link">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="admin/signup">Signup now</a></div>
+        </form>
+    </div>
+</div>

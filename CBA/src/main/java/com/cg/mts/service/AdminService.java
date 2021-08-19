@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.cg.mts.entities.Admin;
 import com.cg.mts.entities.TripBooking;
 import com.cg.mts.exception.AdminNotFoundException;
+import com.cg.mts.exception.CredentialMissmatchException;
 import com.cg.mts.exception.UserNotLoginException;
 import com.cg.mts.repository.IAdminRepository;
 import com.cg.mts.repository.ITripBookingRepository;
@@ -34,32 +35,29 @@ public class AdminService implements IAdminService{
 	static int flag=0;
 	
 	@Override
-	public String insertAdmin(Admin admin) {
-		// TODO Auto-generated method stub
+	public Admin insertAdmin(Admin admin) {
+		
 		if(adminRepository.findByEmail(admin.getEmail()) >0){
-			return admin.getEmail()+" already exists.";
+			throw new CredentialMissmatchException();
 		}else {
 			this.adminRepository.save(admin); 
-			return "Driver ID: "+admin.getAdminId()+"\n"+"Driver Name: "+admin.getUsername()+"\n"+"Account created."; 
+			return admin; 
 		}
 	}
 	
-	public String LoginAdmin(Admin admin) {
-		String result="";
+	public Admin LoginAdmin(Admin admin) {
 		
 		if(adminRepository.findByEmailAndPassword(admin.getEmail(), admin.getPassword()) == 1) {
 			flag = 1;
-			result = "You are logged in";
+			return adminRepository.findByEmailAdmin(admin.getEmail());
 		}else {
-			result = "Username or Password is wrong.";
+			throw new CredentialMissmatchException();
 		}
-		return result;
 	}
 
 	
 	@Override
 	public Admin updateAdmin(Admin admin, long id){
-		// TODO Auto-generated method stub
 		
 		if(flag == 1){ 
 			Admin ad = null; ad = (Admin)
@@ -103,10 +101,9 @@ public class AdminService implements IAdminService{
 		// TODO Auto-generated method stub
 		if(flag == 1) {
 			List<TripBooking> tripList = new ArrayList<TripBooking>();
-			List<TripBooking> findAllTrip = iTripBookingRepository.findAll();
-			for(int i=0; i<findAllTrip.size();i++) {
-				if(findAllTrip.get(i).getDriver().getCab().getCabId() == cabId) {
-					tripList.add(findAllTrip.get(i));
+			for(TripBooking trip : iTripBookingRepository.findAll()) {
+				if(trip.getDriver().getCab().getCabId() == cabId) {
+					tripList.add(trip);
 				}
 			}
 			return tripList;
@@ -120,10 +117,9 @@ public class AdminService implements IAdminService{
 		// TODO Auto-generated method stub
 		if(flag == 1) {
 			List<TripBooking> tripList = new ArrayList<TripBooking>();
-			List<TripBooking> findAllTrip = iTripBookingRepository.findAll();
-			for(int i=0; i<findAllTrip.size(); i++) {
-				if(findAllTrip.get(i).getCustomer().getCustomerId() == customerId) {
-					tripList.add(findAllTrip.get(i));
+			for(TripBooking trip : iTripBookingRepository.findAll()) {
+				if(trip.getCustomer().getCustomerId() == customerId) {
+					tripList.add(trip);
 				}
 			}
 			return tripList;
@@ -136,16 +132,15 @@ public class AdminService implements IAdminService{
 	public List<TripBooking> getTripsDatewise(String date) {
 		// TODO Auto-generated method stub
 		if(flag == 1) {
-			List<TripBooking> tripList = iTripBookingRepository.findAll();
-			List<TripBooking> tripList_1 = new ArrayList<TripBooking>();
+			List<TripBooking> tripList = new ArrayList<TripBooking>();
 			
-			for(int i=0; i<tripList.size(); i++) {
-				String formatDateTime = tripList.get(i).getFromDateTime().format(format);
+			for(TripBooking trip : iTripBookingRepository.findAll()) {
+				String formatDateTime = trip.getFromDateTime().format(format);
 				if(formatDateTime.equals(date)){
-					tripList_1.add(tripList.get(i));
+					tripList.add(trip);
 				}
 			}
-			return tripList_1;
+			return tripList;
 		}else {
 			throw new UserNotLoginException();
 		}
@@ -154,12 +149,11 @@ public class AdminService implements IAdminService{
 	public List<TripBooking>getAllTripsForDays(long customerId, String fromDate, String toDate) {
 		// TODO Auto-generated method stub
 		if(flag == 1) {
-			List<TripBooking> findAllTrip = iTripBookingRepository.findAll();
 			List<TripBooking> tripList = new ArrayList<TripBooking>();
-			for(int i=0; i<findAllTrip.size(); i++) {
-				if(findAllTrip.get(i).getCustomer().getCustomerId() == customerId) {
-					if(findAllTrip.get(i).getFromDateTime().format(format).equals(fromDate) && findAllTrip.get(i).getToDateTime().format(format).equals(toDate)) {
-						tripList.add(findAllTrip.get(i));
+			for(TripBooking trip : iTripBookingRepository.findAll()) {
+				if(trip.getCustomer().getCustomerId() == customerId) {
+					if(trip.getFromDateTime().format(format).equals(fromDate) && trip.getToDateTime().format(format).equals(toDate)) {
+						tripList.add(trip);
 					}
 				}
 			}

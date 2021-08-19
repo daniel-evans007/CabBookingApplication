@@ -70,30 +70,38 @@ public class TripBookingService implements ITripBookingService{
 	@Override
 	public List<TripBooking> viewAllTripsCustomer(long customerId) {
 		// TODO Auto-generated method stub
-		List<TripBooking> findAllTrips = iTripBookingRepository.findAll();
 		List<TripBooking> tripList = new ArrayList<TripBooking>();
-		for(int i=0; i<findAllTrips.size(); i++) {
-			if(findAllTrips.get(i).getCustomer().getCustomerId() == customerId) {
-				tripList.add(findAllTrips.get(i));
+		
+		for(TripBooking trip : iTripBookingRepository.findAll()) {
+			if (trip.getCustomer().getCustomerId() == customerId) {
+				tripList.add(trip);
 			}
 		}
-		return tripList;
+		
+		if(tripList.size()>0) {
+			return tripList;
+		}else {
+			throw new CustomerNotFoundException("Customer Not Found");
+		}
 	}
 
 	@Override
 	public String calculateBill(long customerId) {
 		// TODO Auto-generated method stub
-		Customer cust = iCustomerRepository.findById(customerId).orElseThrow(()-> new CustomerNotFoundException("Customer not found."));
-		List<TripBooking> findAllTrip = iTripBookingRepository.findAll();
 		List<TripBooking> tripList = new ArrayList<TripBooking>();
-		for(int i=0; i<findAllTrip.size(); i++) {
-			if(findAllTrip.get(i).getCustomer().getCustomerId() == customerId) {
-				tripList.add(findAllTrip.get(i));
+		for(TripBooking trip : iTripBookingRepository.findAll()) {
+			if (trip.getCustomer().getCustomerId() == customerId) {
+				tripList.add(trip);
 			}
 		}
-		int size = tripList.size() - 1;
-		String bill = "Total bill is: "+tripList.get(size).getBill();
-		return bill;
+		
+		if(tripList.size()>0) {
+			int size = tripList.size() - 1;
+			String bill = "Total bill is: "+tripList.get(size).getBill();
+			return bill;
+		}else {
+			throw new CustomerNotFoundException("Customer Not Found");
+		}
 	}
 
 }

@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.cg.mts.servicetest.AdminServiceTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.428 s <<< FAILURE! - in com.cg.mts.servicetest.AdminServiceTest
-LoginAdminTest  Time elapsed: 0.051 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <niharika is logged in> but was: <Username or Password is wrong.>
-	at com.cg.mts.servicetest.AdminServiceTest.LoginAdminTest(AdminServiceTest.java:57)
-
