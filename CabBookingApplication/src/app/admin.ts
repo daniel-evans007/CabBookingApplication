@@ -1,7 +1,9 @@
 export class Admin {
-    name: String = "";
+    username: String = "";
     password: String = "";
     email: String = "";
     mobile: String = "";
-    adminId: number = 0
+    adminId: number = 0;
+
+    constructor(){}
 }

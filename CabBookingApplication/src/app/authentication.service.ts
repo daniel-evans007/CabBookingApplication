@@ -1,13 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Customer } from './customer';
-import { HttpClient } from '@angular/common/http'
 import { Admin } from './admin';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthenticationService {
 
   constructor(private _http:HttpClient) { }
 

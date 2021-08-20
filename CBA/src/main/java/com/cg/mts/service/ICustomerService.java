@@ -15,4 +15,5 @@ public interface ICustomerService {
 	public Customer viewCustomer(long customerId);
 	public Customer validateCustomer(String username, String password);
 	public Customer loginUser(Customer customer);
+	public Customer getCustomer(String email);
 }

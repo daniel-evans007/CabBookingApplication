@@ -10,7 +10,7 @@ import com.cg.mts.entities.TripBooking;
 
 @Service
 public interface IAdminService {
-	public Admin LoginAdmin(Admin admin);
+	public Admin loginAdmin(Admin admin);
 	public Admin insertAdmin(Admin admin);
 	public Admin updateAdmin(Admin admin,long adminId);
 	public ResponseEntity<Admin> deleteAdmin(long adminId);
@@ -19,4 +19,5 @@ public interface IAdminService {
 	public List<TripBooking>getTripsCustomerwise(long customerId);
 	public List<TripBooking>getTripsDatewise(String date);
 	public List<TripBooking>getAllTripsForDays(long customerId, String fromDate, String toDate);
+	public Admin getAdmin(String email);
 }

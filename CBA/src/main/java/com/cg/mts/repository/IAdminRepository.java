@@ -18,5 +18,5 @@ public interface IAdminRepository extends JpaRepository<Admin, Long>{
 	int findByEmailAndPassword(@Param("email")String email,@Param("password")String password);
 
 	@Query("select a from Admin a where a.email =:email")
-	Admin findByEmailAdmin(@Param("email")String email);
+	Admin findByEmailAdmin(@Param("email") String email);
 }

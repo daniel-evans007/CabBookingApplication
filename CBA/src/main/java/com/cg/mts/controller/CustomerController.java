@@ -87,4 +87,10 @@ public class CustomerController {
 		return customerService.viewCustomer(customerId);
 	}
 	
+	@ApiOperation(value = "Get Customer By Email")
+	@GetMapping("/getcustomerbyemail/{email}")
+	public Customer getCustomerByEmail(@ApiParam(value = "Email by which Customer details will be retrieved", required = true) @PathVariable("email") String email) {
+		return customerService.getCustomer(email);
+	}
+	
 }

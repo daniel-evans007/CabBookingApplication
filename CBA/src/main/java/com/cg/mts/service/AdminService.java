@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Admin;
+import com.cg.mts.entities.Customer;
 import com.cg.mts.entities.TripBooking;
 import com.cg.mts.exception.AdminNotFoundException;
 import com.cg.mts.exception.CredentialMissmatchException;
@@ -45,7 +46,7 @@ public class AdminService implements IAdminService{
 		}
 	}
 	
-	public Admin LoginAdmin(Admin admin) {
+	public Admin loginAdmin(Admin admin) {
 		
 		if(adminRepository.findByEmailAndPassword(admin.getEmail(), admin.getPassword()) == 1) {
 			flag = 1;
@@ -58,6 +59,7 @@ public class AdminService implements IAdminService{
 	
 	@Override
 	public Admin updateAdmin(Admin admin, long id){
+		// TODO Auto-generated method stub
 		
 		if(flag == 1){ 
 			Admin ad = null; ad = (Admin)
@@ -165,5 +167,13 @@ public class AdminService implements IAdminService{
 		
 	}
 
+	@Override
+	public Admin getAdmin(String email) {
+		if(flag == 1 || flag == 0) {
+			return adminRepository.findByEmailAdmin(email);
+		}else {
+			throw new UserNotLoginException();
+		}
+	}
 }
 

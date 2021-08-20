@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Bootstrap All in One Navbar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda+One">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head> 
+<body>
+	<nav class="navbar navbar-expand-xl navbar-light bg-light">
+		<a href="#" class="navbar-brand"><i class="fa fa-cube"></i>Cab<b>Book</b></a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<!-- Collection of nav links, forms, and other content for toggling -->
+		<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+			<div class="navbar-nav">
+				<a ng-href="#" class="nav-item nav-link active">Home</a>
+				<a href="#aboutus" class="nav-item nav-link">About Us</a>
+				<a href="" class="nav-item nav-link"></a>
+			</div>
+		
+			<div class="navbar-nav ml-auto">
+				<div class="nav-item dropdown">
+					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"> {{customer.username}} <b class="caret"></b></a>
+					<div class="dropdown-menu">
+						<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid" style="width: 100%; background: url('../../assets/banner-img1.jpg'); background-repeat: no-repeat; background-size: 100% 100%;"> 
+	<div class="signup-form" style="margin-left: 60%;">
+		<form>
+			<h2>BOOK CAB</h2>
+			<div class="form-group">
+				<input type="text" class="form-control" name="customerId" placeholder="Pick Up Location" required="required" value={{customer.customerId}} disabled>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="pickup" placeholder="Pick Up Location" required="required">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="drop" placeholder="Drop Location" required="required">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="start" name="trip-start"
+       value={{showDate()}} disabled>
+			</div> 
+			<div class="form-group">
+				<label for="cars">Choose Cab:</label>
+					<select id="cars" name="cabType" class="form-control" required="required">
+					<option value="">--select--</option>
+					<option value="micro">Micro</option>
+					<option value="mini">Mini</option>
+					<option value="sedan">Sedan</option>
+					<option value="suv">Suv</option>
+				</select>
+			</div>        
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block">Book Now</button>
+			</div>
+		</form>
+	</div>
+	</div>
+	<br>
+	<hr>
+	<div class="container-fluid" #aboutus>
+		<div class="row">
+			<div class="col-lg-12 mx-auto">
+				<h3>About Us</h3>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Carousel indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>   
+					<!-- Wrapper for carousel items -->
+					<br>
+					<br>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="img-box"><img src="../../assets/lion.gif" alt=""></div>
+							<p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+							<p class="overview"><b>Paula Wilson</b>, Media Analyst</p>
+						</div>
+						<div class="carousel-item">
+							<div class="img-box"><img src="../../assets/lion.gif" alt=""></div>
+							<p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+							<p class="overview"><b>Antonio Moreno</b>, Web Developer</p>
+						</div>
+						<div class="carousel-item">
+							<div class="img-box"><img src="../../assets/lion.gif" alt=""></div>
+							<p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+							<p class="overview"><b>Michael Holz</b>, Seo Analyst</p>
+						</div>
+					</div>
+					<!-- Carousel controls -->
+					<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+						<i class="fa fa-angle-left"></i>
+					</a>
+					<a class="carousel-control-next" href="#myCarousel" data-slide="next">
+						<i class="fa fa-angle-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+        <div class="ContactUs">
+          <div class="top">
+            <div class="logo-details">
+              <i class="fab fa-slack"></i>
+              <span class="logo_name">Contact Us</span>
+            </div>
+            <div class="media-icons">
+              <a href="https://www.facebook.com/BikramjitkrBhuiya"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/debajyoti-roy-82b457163/"><i class="fa fa-linkedin-in"></i></a>
+              <a href="https://www.youtube.com/channel/UC2nOp9_hu0BHcCTPfP7R2lg"><i class="fa fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="link-boxes">
+            <ul class="box">
+              <li class="link_name">Company</li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="./login.html">Book A Cab</a></li>
+            </ul>
+            <ul class="box">
+              <li class="link_name">Services</li>
+              <li><a href="#">Cab Services</a></li>
+              <li><a href="#">24x7 Cab Availability</a></li>
+            </ul>
+            <ul class="box">
+              <li class="link_name">Contact Details</li>
+              <li><a href="#">cabbookingapp@gmail.com</a></li>
+              <li><a href="#">+91-9090909090</a></li>
+              <li><a href="#">+033-2525 2525</a></li>
+            </ul>
+            <ul class="box input-box">
+              <li class="link_name">Subscribe for Offers</li>
+              <li><input type="text" placeholder="Enter your email"></li>
+              <li><input type="button" value="Subscribe"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-details">
+          <div class="bottom_text">
+            <span class="copyright_text">Copyright © 2021 <a href="#">Cab Booking Application.</a>All rights reserved</span>
+            <span class="policy_terms">
+              <a href="#">Privacy policy</a>
+              <a href="#">Terms & condition</a>
+            </span>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>                            

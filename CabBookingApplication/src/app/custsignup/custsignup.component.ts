@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Admin } from '../admin';
-import { AuthServiceService } from '../auth-service.service';
+import { AuthenticationService } from '../authentication.service';
 import { Customer } from '../customer';
+
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-custsignup',
+  templateUrl: './custsignup.component.html',
+  styleUrls: ['./custsignup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class CustsignupComponent implements OnInit {
 
   customer = new Customer();
-  
+
   msg = '';
-  constructor(private _service:AuthServiceService, private _router:Router) { }
+  constructor(private _service: AuthenticationService, private _router: Router) { }
 
   ngOnInit(): void {
   }

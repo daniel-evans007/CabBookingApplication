@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminComponent } from './admin/admin.component';
 import { AdminsignupComponent } from './adminsignup/adminsignup.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { CustomerComponent } from './customer/customer.component';
+import { ProfileComponent } from './customer/profile.component';
+import { CustsignupComponent } from './custsignup/custsignup.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'customer/login',component:LoginComponent},
-  {path:'customer/signup',component:SignupComponent},
-  {path: 'admin/login', component: AdminloginComponent},
-  {path: 'admin/signup', component: AdminsignupComponent}
+  { path: 'admin/login', component: AdminComponent },
+  { path: 'customer/login', component: CustomerComponent },
+  { path: 'home/:email', component: ProfileComponent },
+  { path: 'customer/signup', component: CustsignupComponent },
+  { path: 'admin/signup', component: AdminsignupComponent },
+  { path: 'admin/:email', component: AdminProfileComponent }
 ];
 
 @NgModule({

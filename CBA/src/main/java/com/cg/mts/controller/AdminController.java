@@ -41,7 +41,7 @@ public class AdminController {
 	@PostMapping("/login")
 	public Admin adminLogin(@ApiParam(value = "Admin login", required = true) @RequestBody Admin admin) {
 		
-		return adminService.LoginAdmin(admin);
+		return adminService.loginAdmin(admin);
 	}
 	
 	@ApiOperation(value = "Insert a Admin")
@@ -91,5 +91,10 @@ public class AdminController {
 	public List<TripBooking> getAllTripsForDays (@PathVariable("customerId")long customerId,@PathVariable("fromDate") String fromDate,@PathVariable("toDate") String toDate) {
 		return adminService.getAllTripsForDays(customerId, fromDate, toDate);
 	}
-
+	
+	@ApiOperation(value = "Get Admin by Email")
+	@GetMapping("/getadminbyemail/{email}")
+	public Admin getAdmin(@ApiParam(value = "Email by which Admin details will be retrieved", required = true) @PathVariable("email") String email) {
+		return adminService.getAdmin(email);
+	}
 }

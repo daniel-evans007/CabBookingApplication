@@ -96,4 +96,14 @@ public class CustomerService implements ICustomerService{
 		return null;
 	}
 
+	@Override
+	public Customer getCustomer(String email) {
+		// TODO Auto-generated method stub
+		if(flag == 1 || flag == 0) {
+			return customerRepository.findByEmailCustomer(email);
+		}else {
+			throw new UserNotLoginException();
+		}
+	}
+
 }
