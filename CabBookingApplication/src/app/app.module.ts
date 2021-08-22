@@ -8,18 +8,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { CustsignupComponent } from './custsignup/custsignup.component';
 import { AdminsignupComponent } from './adminsignup/adminsignup.component';
+import { CustprofdetailsComponent } from './custprofdetails/custprofdetails.component';
+import { TripsComponent } from './trips/trips.component';
+import { UpdatecustomerComponent } from './updatecustomer/updatecustomer.component';
+import { UpdateadminComponent } from './updateadmin/updateadmin.component';
+import { AdminprofdetailsComponent } from './adminprofdetails/adminprofdetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     AdminComponent,
-    AdminProfileComponent,
     CustsignupComponent,
-    AdminsignupComponent  ],
+    AdminsignupComponent,
+    CustprofdetailsComponent,
+    TripsComponent,
+    UpdatecustomerComponent,
+    UpdateadminComponent,
+    AdminprofdetailsComponent  ],
   imports: [
     BrowserModule,
     FormsModule,

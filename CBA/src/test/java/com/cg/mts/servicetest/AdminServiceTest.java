@@ -54,7 +54,7 @@ public class AdminServiceTest {
 		  adminList.add(admin);
 		  String result = "niharika is logged in";
 		  when(adminRepo.findAll()).thenReturn(adminList);
-			assertEquals(result, adminService.LoginAdmin(admin));
+			assertEquals(result, adminService.loginAdmin(admin));
 	  }
 	  
 	 

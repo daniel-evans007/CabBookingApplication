@@ -27,10 +27,10 @@
                 <input type="password" class="form-control" name="password" placeholder="Password" required  [(ngModel)]="customer.password">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                <button type="submit" class="btn btn-primary btn-block" (click) = "goDetails()">Log in</button>
             </div>      
         </form>
-        <p class="text-center"><a href="customer/signup">Create an Account</a></p>
+        <p class="text-center"><a (click)="goSignup()">Create an Account</a></p>
     </div>
 </div>
 </body>

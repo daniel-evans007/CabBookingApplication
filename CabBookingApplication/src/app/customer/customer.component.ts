@@ -16,6 +16,7 @@ export class CustomerComponent implements OnInit {
   // public customerPassword = '';
   public customer = new Customer();
   public msg:String ="";
+  
   constructor(private _customerservice : CustomerService, private _router : Router) { }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class CustomerComponent implements OnInit {
     this._customerservice.loginUserFromRemote(this.customer).subscribe(
       data=> {
         console.log(data);
-        this._router.navigate(['home',this.customer.email]);
+        this._router.navigate(['customer',this.customer.email]);
     },
       error=> {
         console.log("exception received "+ error)
@@ -42,4 +43,12 @@ export class CustomerComponent implements OnInit {
     );
   }
 
+  goSignup() {
+    this._router.navigate(['customer/signup']);
+  }
+
+  goDetails(){
+    this._router.navigate(['customer/details',this.customer.email]);
+  }
 }
+

@@ -1,0 +1,47 @@
+<ul>
+    <li style="float: left; font-size: 25px; color: white; margin-top: 5px; margin-left: 15px;">Cab Booking Application</li>
+    <li><a href="/">Log out</a></li>
+</ul>
+<div class="sidenav">
+    <img src="../../assets/lion.gif" alt="Avatar" height="100px;" width="100px;" style="margin-left: 70px;"><br><br>
+    <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{customer.customerId}}</span><br>
+    <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{customer.username}}</span>
+    <hr style="width: 60%; background-color: rgb(228, 225, 225);">
+    <a (click)="goBookCab" style="color: white">Book Cab</a>
+    <a href="#clients">Ongoing Trips</a>
+    <a (click)="goTrips()">Your Trips</a>
+    <a (click)="goUpdate()">Update Profile</a>
+</div>
+<div class="main">
+    <div class="signup-form" style="margin-left: 38%; margin-top: 40px;">
+		<form>
+			<h2>BOOK CAB</h2>
+			<div class="form-group">
+				<input type="text" class="form-control" name="customerId" placeholder="Pick Up Location" required="required" value={{customer.customerId}} disabled>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="pickup" placeholder="Pick Up Location" required="required">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" name="drop" placeholder="Drop Location" required="required">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="start" name="trip-start" value={{showDate()}} disabled>
+			</div> 
+			<div class="form-group">
+				<label for="cars">Choose Cab:</label>
+					<select id="cars" name="cabType" class="form-control" required="required">
+					<option value="">--select--</option>
+					<option value="micro">Micro</option>
+					<option value="mini">Mini</option>
+					<option value="sedan">Sedan</option>
+					<option value="suv">Suv</option>
+				</select>
+			</div>        
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block" style=" background-color: #222;">Book Now</button>
+			</div>
+		</form>
+	</div>
+    <router-outlet></router-outlet>
+</div>

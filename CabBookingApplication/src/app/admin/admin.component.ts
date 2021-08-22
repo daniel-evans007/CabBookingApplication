@@ -19,16 +19,19 @@ export class AdminComponent implements OnInit {
 
 
   loginUser() {
-
     this._adminservice.loginUserFromRemote(this.admin).subscribe(
       data=> {
         console.log(data);
-        this._router.navigate(['home',this.admin.email]);
+        this._router.navigate(['admin',this.admin.email]);
     },
       error=> {
         console.log("exception received "+ error)
         this.msg = 'Email or Password is wrong'; 
     }
     );
+  }
+
+  goDetails(){
+    this._router.navigate(['admin/details',this.admin.email]);
   }
 }
