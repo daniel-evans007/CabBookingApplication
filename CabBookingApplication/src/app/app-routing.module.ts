@@ -7,6 +7,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustprofdetailsComponent } from './custprofdetails/custprofdetails.component';
 import { CustsignupComponent } from './custsignup/custsignup.component';
 import { TripsComponent } from './trips/trips.component';
+import { UpdateadminComponent } from './updateadmin/updateadmin.component';
+import { UpdatecustomerComponent } from './updatecustomer/updatecustomer.component';
 
 const routes: Routes = [
   { path: 'admin/login', component: AdminComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'customer/login', component: CustomerComponent },
   { path: 'admin/signup', component: AdminsignupComponent },
   { path: 'customer/details/:email', component: CustprofdetailsComponent },
-  { path: 'customer/details/trips/:email', component:TripsComponent }
+  { path: 'customer/details/trips/:email', component:TripsComponent },
+  { path: 'customer/details/update/:email', component: UpdatecustomerComponent},
+  { path: 'admin/details/update/:email', component: UpdateadminComponent}
 ];
 
 @NgModule({

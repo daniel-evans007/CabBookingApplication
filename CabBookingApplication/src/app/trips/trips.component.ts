@@ -28,4 +28,16 @@ export class TripsComponent implements OnInit {
                     error => console.log(error));
     
   }
+
+  goTrips(){
+    this._router.navigate(['customer/details/trips',this.customer.email]);
+  }
+
+  goBookCab(){
+    this._router.navigate(['customer/details',this.customer.email]);
+  }
+
+  goUpdate(){
+    this._router.navigate(['customer/details/update',this.customer.email]);
+  }
 }

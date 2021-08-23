@@ -7,10 +7,10 @@
     <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{customer.customerId}}</span><br>
     <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{customer.username}}</span>
     <hr style="width: 60%; background-color: rgb(228, 225, 225);">
-    <a href="#clients">Upcoming Trips</a>
+    <a (click)= "goBookCab()" style="color: grey;" >Book Cab</a>
     <a href="#clients">Ongoing Trips</a>
     <span class="active" style="font-size: 25px; color: white; margin-top: 5px; margin-left: 15px;">Your Trips</span>
-    <a href="#clients">Update Profile</a>
+    <a (click)= "goUpdate()">Update Profile</a>
 </div>
 <div class="main">
     <table id="customers">
@@ -25,3 +25,6 @@
         </tr>
     </table>
 </div>
+
+
+<router-outlet></router-outlet>

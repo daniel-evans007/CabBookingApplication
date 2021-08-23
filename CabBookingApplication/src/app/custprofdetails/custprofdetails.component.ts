@@ -27,7 +27,7 @@ export class CustprofdetailsComponent implements OnInit {
   }
 
   goTrips(){
-    this._router.navigate(['customer/details/trips/:email',this.customer.email]);
+    this._router.navigate(['customer/details/trips',this.customer.email]);
   }
 
   goBookCab(){
