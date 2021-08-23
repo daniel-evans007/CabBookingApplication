@@ -3,7 +3,7 @@ export class Admin {
     password: String = "";
     email: String = "";
     mobile: String = "";
-    adminId: number = 0;
+    adminId: number;
 
     constructor(){}
 }

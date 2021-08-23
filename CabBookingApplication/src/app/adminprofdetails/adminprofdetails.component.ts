@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Admin } from '../admin';
 import { AdminService } from '../admin.service';
+import { Customer } from '../customer';
+import { Driver } from '../driver';
 
 @Component({
   selector: 'app-adminprofdetails',
@@ -15,6 +17,9 @@ export class AdminprofdetailsComponent implements OnInit {
   constructor(private _adservice: AdminService, private _route: ActivatedRoute, private _router: Router) { }
 
   public admin: Admin = new Admin();
+  public customer: Customer = new Customer();
+  public driver: Driver = new Driver();
+  
   public email: string = "";
 
   ngOnInit(): void {
@@ -27,5 +32,44 @@ export class AdminprofdetailsComponent implements OnInit {
     error => console.log(error));
   }
 
+  deleteUsers() {
+
+  }
+
+  deleteAdmin() {
+
+  }
+
+  deleteCustomer() {
+
+  }
+
+  deleteDriver() {
+
+  }
+
+  updateAdmin() {
+    
+  }
+
+  allTrips() {
+
+  }
+
+  tripsDateWise() {
+
+  }
+
+  tripsCabWise() {
+
+  }
+
+  tripsCustomerWise() {
+
+  }
+
+  tripsDateRange() {
+
+  }
 
 }
