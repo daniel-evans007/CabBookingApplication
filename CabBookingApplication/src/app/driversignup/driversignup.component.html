@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <div class="title-text">
+        <div class="title signup">Signup</div>
+    </div>
+    <div class="form-inner">
+        <form class="signup" #signupForm="ngForm" (ngSubmit)="registerDriver()">
+            <div class="field">
+                <input type="text" placeholder="Name" required name="name" #name="ngModel" [(ngModel)]="driver.username">
+            </div>
+            <div class="field">
+                <input type="email" placeholder="Email Address" required name="email" #email="ngModel" [(ngModel)]="driver.email">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Mobile Number" required name="mobile" #number="ngModel" [(ngModel)]="driver.mobile">
+            </div>
+            <div class="field">
+                <input type="password" placeholder="Password" required name="password" #password="ngModel" [(ngModel)]="driver.password">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="License Number" required name="licenseNo" #licenseNo="ngModel" [(ngModel)]="driver.licenseNo">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Rating" required name="rating" #rating="ngModel" [(ngModel)]="driver.rating">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Cab Type" required name="carType" #carType="ngModel" [(ngModel)]="driver.cab.carType">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Rate Per KM" required name="perKmRate" #perKmRate="ngModel" [(ngModel)]="driver.cab.perKmRate">
+            </div>
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Signup">
+            </div>
+        </form>
+    </div>
+</div>

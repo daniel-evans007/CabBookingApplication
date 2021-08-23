@@ -36,7 +36,7 @@ public class Driver extends AbstractUser {
 	
 	
 
-	public Driver(long joinId, String username, String password, String mobileNumber, String email, long driverId,
+	public Driver(String username, String password, String mobileNumber, String email, long driverId,
 			String licenseNo, Cab cab, float rating) {
 		super(username, password, mobileNumber, email);
 		this.driverId = driverId;

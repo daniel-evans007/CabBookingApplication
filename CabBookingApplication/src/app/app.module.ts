@@ -15,6 +15,13 @@ import { TripsComponent } from './trips/trips.component';
 import { UpdatecustomerComponent } from './updatecustomer/updatecustomer.component';
 import { UpdateadminComponent } from './updateadmin/updateadmin.component';
 import { AdminprofdetailsComponent } from './adminprofdetails/adminprofdetails.component';
+import { DriverComponent } from './driver/driver.component';
+import { DriversignupComponent } from './driversignup/driversignup.component';
+import { DriverprofdetailsComponent } from './driverprofdetails/driverprofdetails.component';
+import { UpdatedriverComponent } from './updatedriver/updatedriver.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { DrivertripsComponent } from './drivertrips/drivertrips.component';
+import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,14 @@ import { AdminprofdetailsComponent } from './adminprofdetails/adminprofdetails.c
     TripsComponent,
     UpdatecustomerComponent,
     UpdateadminComponent,
-    AdminprofdetailsComponent  ],
+    AdminprofdetailsComponent,
+    DriverComponent,
+    DriversignupComponent,
+    DriverprofdetailsComponent,
+    UpdatedriverComponent,
+    PagenotfoundComponent,
+    DrivertripsComponent,
+    BestdriversComponent],
   imports: [
     BrowserModule,
     FormsModule,

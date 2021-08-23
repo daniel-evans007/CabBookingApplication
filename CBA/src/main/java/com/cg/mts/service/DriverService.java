@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.cg.mts.entities.Driver;
+import com.cg.mts.exception.CredentialMissmatchException;
 import com.cg.mts.exception.DriverNotFoundException;
 import com.cg.mts.exception.UserNotLoginException;
 import com.cg.mts.repository.IDriverRepository;
@@ -23,27 +24,25 @@ public class DriverService implements IDriverService{
 	static int flag=0;
 	
 	@Override
-	public String insertDriver(Driver driver) {
+	public Driver insertDriver(Driver driver) {
 		// TODO Auto-generated method stub
 
 		if(iDriverRepository.findByEmail(driver.getEmail()) >0){
-			return driver.getEmail()+" already exists.";
+			throw new CredentialMissmatchException();
 		}else {
 			this.iDriverRepository.save(driver); 
-			return "Driver ID: "+driver.getDriverId()+"\n"+"Driver Name: "+driver.getUsername()+"\n"+"Account created."; 
+			return driver;
 		}
 	}
 
-	public String loginDriver(Driver driver) {
-		String result="";
+	public Driver loginDriver(Driver driver) {
 		
 		if(iDriverRepository.findByEmailAndPassword(driver.getEmail(), driver.getPassword()) == 1) {
 			flag = 1;
-			result = "You are logged in";
+			return iDriverRepository.findByEmailDriver(driver.getEmail());
 		}else {
-			result = "Username or Password is wrong.";
+			throw new CredentialMissmatchException();
 		}
-		return result;
 	}
 	
 	@Override
@@ -94,6 +93,16 @@ public class DriverService implements IDriverService{
 			Driver dvr = iDriverRepository.findById(id).orElseThrow(()-> new DriverNotFoundException("Driver not found"));
 			return dvr;
 		}else {
+			throw new UserNotLoginException();
+		}
+	}
+
+	@Override
+	public Driver getDriver(String email) {
+		if (flag == 1 || flag == 0) {
+			return iDriverRepository.findByEmailDriver(email);
+		}
+		else {
 			throw new UserNotLoginException();
 		}
 	}

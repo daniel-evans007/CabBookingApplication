@@ -1,0 +1,54 @@
+<ul>
+    <li style="float: left; font-size: 25px; color: white; margin-top: 5px; margin-left: 15px;">Cab Booking Application</li>
+    <li><a href="/">Log out</a></li>
+</ul>
+<div class="sidenav">
+    <img src="../../assets/lion.gif" alt="Avatar" height="100px;" width="100px;" style="margin-left: 70px;"><br><br>
+    <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{driver.driverId}}</span><br>
+    <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{driver.username}}</span>
+    <hr style="width: 60%; background-color: rgb(228, 225, 225);">
+    <a (click)= "goDriver()" style="color: white;">View Driver</a>
+    <a (click)= "goTrips()">Total Trips</a>
+    <a (click)= "goUpdate()">Update Profile</a>
+    <a (click)= "bestDrivers()">Best Drivers</a>
+</div>
+
+<div class="main"> 
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title signup">Update</div>
+        </div>
+        <div class="form-inner">
+            <form class="signup" #signupForm="ngForm" (ngSubmit)="updateDriver()">
+                <div class="field">
+                    <input type="text" placeholder="Name" required name="name" #name="ngModel" [(ngModel)]="driver.username">
+                </div>
+                <div class="field">
+                    <input type="email" placeholder="Email Address" required name="email" #email="ngModel" [(ngModel)]="driver.email">
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Mobile Number" required name="mobile" #number="ngModel" [(ngModel)]="driver.mobile">
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" required name="password" #password="ngModel" [(ngModel)]="driver.password">
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="License Number" required name="licenseNo" #licenseNo="ngModel" [(ngModel)]="driver.licenseNo" disabled>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Rating" required name="rating" #rating="ngModel" [(ngModel)]="driver.rating" disabled>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Cab Type" required name="carType" #carType="ngModel" [(ngModel)]="driver.cab.carType">
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Rate Per KM" required name="perKmRate" #perKmRate="ngModel" [(ngModel)]="driver.cab.perKmRate">
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

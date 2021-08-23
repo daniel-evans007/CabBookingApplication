@@ -18,6 +18,9 @@ public interface IDriverRepository extends JpaRepository<Driver, Long>{
 	@Query("select COUNT(d) from Driver d where d.email =:email")
 	int findByEmail(@Param("email")String email);
 	
+	@Query("select d from Driver d where d.email =:email")
+	Driver findByEmailDriver(@Param("email") String email);
+	
 	@Query("select COUNT(d) from Driver d where d.email =:email and d.password=:password")
 	int findByEmailAndPassword(@Param("email")String email,@Param("password")String password);
 }

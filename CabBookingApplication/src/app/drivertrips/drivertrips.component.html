@@ -4,14 +4,15 @@
 </ul>
 <div class="sidenav">
     <img src="../../assets/lion.gif" alt="Avatar" height="100px;" width="100px;" style="margin-left: 70px;"><br><br>
-    <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{customer.customerId}}</span><br>
-    <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{customer.username}}</span>
+    <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{driver.driverId}}</span><br>
+    <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{driver.username}}</span>
     <hr style="width: 60%; background-color: rgb(228, 225, 225);">
-    <a (click)= "goBookCab()" style="color: grey;" >Book Cab</a>
-    <a href="#clients">Ongoing Trips</a>
-    <span class="active" style="font-size: 25px; color: white; margin-top: 5px; margin-left: 15px;">Your Trips</span>
+    <a (click)= "goDriver()" >View Driver</a>
+    <a (click)= "goTrips()" style="color: white;">Total Trips</a>
     <a (click)= "goUpdate()">Update Profile</a>
+    <a (click)= "bestDrivers()">Best Drivers</a>
 </div>
+
 <div class="main">
     <table id="customers">
         <tr>
@@ -25,3 +26,4 @@
         </tr>
     </table>
 </div>
+

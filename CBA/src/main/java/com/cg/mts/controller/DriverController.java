@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.mts.entities.Admin;
 import com.cg.mts.entities.Driver;
 import com.cg.mts.service.IDriverService;
 
@@ -27,6 +29,7 @@ import io.swagger.annotations.ApiParam;
  * @author Shrijit
  *
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/driver")
 @Api(value="Driver Operations")
@@ -38,14 +41,14 @@ public class DriverController {
 	
 	@ApiOperation(value = "Driver Login")
 	@PostMapping("/login")
-	public String driverLogin(@ApiParam(value = "Driver login", required = true) @RequestBody Driver driver) {
+	public Driver driverLogin(@ApiParam(value = "Driver login", required = true) @RequestBody Driver driver) {
 		
 		return driverService.loginDriver(driver);
 	}
 	
 	@ApiOperation(value = "Insert a Driver")
 	@PostMapping("/insertdriver")
-	public String insertDriver(@ApiParam(value = "Storing Drivers in the database", required = true) @RequestBody Driver driver) {
+	public Driver insertDriver(@ApiParam(value = "Storing Drivers in the database", required = true) @RequestBody Driver driver) {
 		// TODO Auto-generated method stub
 		return driverService.insertDriver(driver);
 	}
@@ -76,5 +79,11 @@ public class DriverController {
 	public List<Driver> viewBestDrivers() {
 		// TODO Auto-generated method stub
 		return driverService.viewBestDrivers();
+	}
+	
+	@ApiOperation(value = "Get Driver by Email")
+	@GetMapping("/getdriverbyemail/{email}")
+	public Driver getDriver(@ApiParam(value = "Email by which Driver details will be retrieved", required = true) @PathVariable("email") String email) {
+		return driverService.getDriver(email);
 	}
 }

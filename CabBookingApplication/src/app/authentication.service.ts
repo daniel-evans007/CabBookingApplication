@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Admin } from './admin';
 import { Customer } from './customer';
+import { Driver } from './driver';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,13 @@ export class AuthenticationService {
 
   public signupAdminFromRemote(admin: Admin):Observable<any>{
     return this._http.post(`${this.serverUrl}/admin/insertadmin`, admin);
+  }
+
+  public loginDriverFromRemote(driver: Driver):Observable<any>{
+    return this._http.post(`${this.serverUrl}/driver/login`, driver);
+  }
+
+  public signupDriverFromRemote(driver: Driver):Observable<any>{
+    return this._http.post(`${this.serverUrl}/driver/insertdriver`, driver);
   }
 }

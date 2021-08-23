@@ -10,8 +10,9 @@ export class CustomerService {
   constructor(private _http:HttpClient) { }
   
   public loginUserFromRemote(customer: Customer):Observable<any>{
-    return this._http.post("http://localhost:8087/api/customer/login",customer);
+    return this._http.post(`${this._baseUrl}/login`,customer);
   }
+  
   public getCustomer(email : String):Observable<Customer>{
     return this._http.get<Customer>(`${this._baseUrl}/getcustomerbyemail/${email}`);
   }
