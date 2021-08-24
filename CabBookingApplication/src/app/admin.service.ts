@@ -19,4 +19,8 @@ export class AdminService {
   public getAdmin(email: String): Observable<Admin> {
     return this._http.get<Admin>(`${this._baseUrl}/getadminbyemail/${email}`);
   }
+
+  public updateAdmin(adminId:number, admin: Admin):Observable<Admin>{
+    return this._http.put<Admin>(`${this._baseUrl}/updateadmin/${adminId}`, admin);
+  }
 }

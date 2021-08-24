@@ -19,4 +19,8 @@ export class DriverService {
   public getDriver(email: String): Observable<Driver> {
     return this._http.get<Driver>(`${this._baseUrl}/getdriverbyemail/${email}`);
   }
+
+  public updateDriver(driverId:number, driver: Driver):Observable<Driver>{
+    return this._http.put<Driver>(`${this._baseUrl}/updatedriver/${driverId}`, driver);
+  }
 }

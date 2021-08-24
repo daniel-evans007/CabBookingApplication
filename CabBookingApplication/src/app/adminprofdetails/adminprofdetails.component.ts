@@ -36,10 +36,6 @@ export class AdminprofdetailsComponent implements OnInit {
 
   }
 
-  deleteAdmin() {
-
-  }
-
   deleteCustomer() {
 
   }
@@ -49,7 +45,7 @@ export class AdminprofdetailsComponent implements OnInit {
   }
 
   updateAdmin() {
-    
+    this._router.navigate(['admin/details/update', this.admin.email]);
   }
 
   allTrips() {

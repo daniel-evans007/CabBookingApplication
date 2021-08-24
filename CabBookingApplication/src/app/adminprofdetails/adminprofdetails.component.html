@@ -8,7 +8,7 @@
     <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{admin.username}}</span>
     <hr style="width: 60%; background-color: rgb(228, 225, 225);">
     <a (click)= "deleteUsers()" style="color: white;">Delete Users</a>
-    <a (click)= "updateAdmin()">Update Admin Details</a>
+    <a (click)= "updateAdmin()">Update Profile</a>
     <a (click)= "allTrips()">View All Trips</a>
     <a (click)= "tripsDateWise()">Date-Wise Trips</a>
     <a (click)= "tripsCabWise()">Cab-Wise Trips</a>
@@ -17,12 +17,12 @@
 </div>
 
 <div class="main">
-    <div class="wrapper" style="float: left; margin-left: 15%; margin-top: 15%;">
+    <div class="wrapper" style="float: left; margin-left: 17%; margin-top: 15%;">
         <div class="title-text">
-            <div class="title signup">Delete Admin</div>
+            <div class="title signup">Admin</div>
         </div>
         <div class="form-inner">
-            <form action="#" class="signup" #signupForm="ngForm" (ngSubmit)="deleteAdmin()">
+            <form action="#" class="signup" #signupForm="ngForm" (ngSubmit)="deleteUsers()">
                 <div class="field">
                     <input type="text" placeholder="Admin ID" required name="name" #name="ngModel" [(ngModel)]="admin.adminId">
                 </div>
@@ -35,7 +35,7 @@
     </div>
     <div class="wrapper" style="float: left; margin-left: 5%; margin-top: 15%">
         <div class="title-text">
-            <div class="title signup">Delete Customer</div>
+            <div class="title signup">Customer</div>
         </div>
         <div class="form-inner">
             <form action="#" class="signup" #signupForm="ngForm" (ngSubmit)="deleteCustomer()">
@@ -51,7 +51,7 @@
     </div>
     <div class="wrapper" style="float: left; margin-left: 5%; margin-top: 15%">
         <div class="title-text">
-            <div class="title signup">Delete Driver</div>
+            <div class="title signup">Driver</div>
         </div>
         <div class="form-inner">
             <form action="#" class="signup" #signupForm="ngForm" (ngSubmit)="deleteDriver()">

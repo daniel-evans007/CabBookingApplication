@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
     this._adminservice.loginUserFromRemote(this.admin).subscribe(
       data=> {
         console.log(data);
-        this._router.navigate(['admin',this.admin.email]);
+        this._router.navigate(['admin/details',this.admin.email]);
     },
       error=> {
         console.log("exception received "+ error)
@@ -31,7 +31,4 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  goDetails(){
-    this._router.navigate(['admin/details',this.admin.email]);
-  }
 }

@@ -11,6 +11,7 @@ import { DriverService } from '../driver.service';
 export class UpdatedriverComponent implements OnInit {
 
   public driver: Driver = new Driver();
+  public driverId: number;
   public email: string = "";
 
   constructor(private _driverservice: DriverService, private _route: ActivatedRoute, private _router: Router) { }
@@ -21,6 +22,7 @@ export class UpdatedriverComponent implements OnInit {
                   .subscribe(data => 
                     {
                       this.driver = data; 
+                      this.driverId = this.driver.driverId;
                       console.log(this.driver.username);
                     }, 
                     error => console.log(error));
@@ -32,7 +34,7 @@ export class UpdatedriverComponent implements OnInit {
   }
 
   goUpdate(){
-    this._router.navigate(['driver/updatedetails',this.driver.email]);
+    this._router.navigate(['driver/details/update',this.driver.email]);
   }
 
   bestDrivers() {
@@ -44,7 +46,12 @@ export class UpdatedriverComponent implements OnInit {
   }
 
   updateDriver() {
-    
+    this._driverservice.updateDriver(this.driverId, this.driver).subscribe(
+      data=> {
+        this.driver = data;
+        console.log(data);
+      },
+      error => console.log(error));
   }
 
 }

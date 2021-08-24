@@ -2,7 +2,7 @@ export class Admin {
     username: String = "";
     password: String = "";
     email: String = "";
-    mobile: String = "";
+    mobileNumber: String = "";
     adminId: number;
 
     constructor(){}

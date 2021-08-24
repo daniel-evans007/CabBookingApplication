@@ -11,8 +11,8 @@ import { CustomerService } from '../customer.service';
 export class CustprofdetailsComponent implements OnInit {
 
   public customer: Customer = new Customer();
-  public email: string = "";
-  dateNow: string = "";
+  public email: string;
+  dateNow: string;
 
   constructor(private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router) { }
 

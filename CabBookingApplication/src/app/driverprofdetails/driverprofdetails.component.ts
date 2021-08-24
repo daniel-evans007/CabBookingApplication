@@ -30,7 +30,7 @@ export class DriverprofdetailsComponent implements OnInit {
   }
 
   goUpdate(){
-    this._router.navigate(['driver/updatedetails',this.driver.email]);
+    this._router.navigate(['driver/details/update',this.driver.email]);
   }
 
   bestDrivers() {

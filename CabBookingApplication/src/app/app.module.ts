@@ -22,6 +22,7 @@ import { UpdatedriverComponent } from './updatedriver/updatedriver.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DrivertripsComponent } from './drivertrips/drivertrips.component';
 import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
+import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrips.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
     UpdatedriverComponent,
     PagenotfoundComponent,
     DrivertripsComponent,
-    BestdriversComponent],
+    BestdriversComponent,
+    AdminviewalltripsComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -16,4 +16,8 @@ export class CustomerService {
   public getCustomer(email : String):Observable<Customer>{
     return this._http.get<Customer>(`${this._baseUrl}/getcustomerbyemail/${email}`);
   }
+
+  public updateCustomer(customerId:number, customer: Customer):Observable<Customer>{
+    return this._http.put<Customer>(`${this._baseUrl}/updatecustomer/${customerId}`, customer);
+  }
 }

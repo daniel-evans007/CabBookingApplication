@@ -11,7 +11,9 @@ import { AdminService } from '../admin.service';
 export class UpdateadminComponent implements OnInit {
 
   public admin: Admin = new Admin();
-  public email: string = "";
+  public adminId: number;
+  public email: string;
+
   constructor(private _adminservice: AdminService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
@@ -19,18 +21,25 @@ export class UpdateadminComponent implements OnInit {
     this._adminservice.getAdmin(this.email)
                   .subscribe(data => 
                     {
-                      this.admin = data; 
+                      this.admin = data;
+                      this.adminId = this.admin.adminId; 
                       console.log(this.admin.username);
                     }, 
                     error => console.log(error));
   }
 
-  deleteUsers() {
-
-  }
 
   updateAdmin() {
-    
+    this._adminservice.updateAdmin(this.adminId, this.admin).subscribe(
+      data=> {
+        this.admin = data;
+        console.log(data);
+      },
+      error => console.log(error));
+  }
+
+  deleteUsers() {
+    this._router.navigate(['admin/details', this.admin.email]);
   }
 
   allTrips() {

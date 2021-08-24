@@ -20,9 +20,10 @@ const routes: Routes = [
   { path: 'driver/signup', component: DriversignupComponent},
   { path: 'driver/login', component: DriverComponent},
   { path: 'driver/details/:email', component: DriverprofdetailsComponent},
-  { path: 'driver/updatedetails/:email', component: UpdatedriverComponent},
+  { path: 'driver/details/update/:email', component: UpdatedriverComponent},
   { path: 'driver/details/bestdrivers', component: BestdriversComponent},
   { path: 'driver/details/drivertrips/:email', component: DrivertripsComponent},
+  { path: 'driver/details/viewdriver/:email', component: DriverprofdetailsComponent},
 
   { path: 'admin/signup', component: AdminsignupComponent },
   { path: 'admin/login', component: AdminComponent },

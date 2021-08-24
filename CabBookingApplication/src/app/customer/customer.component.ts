@@ -34,7 +34,7 @@ export class CustomerComponent implements OnInit {
     this._customerservice.loginUserFromRemote(this.customer).subscribe(
       data=> {
         console.log(data);
-        this._router.navigate(['customer',this.customer.email]);
+        this._router.navigate(['customer/details',this.customer.email]);
     },
       error=> {
         console.log("exception received "+ error)
@@ -47,8 +47,5 @@ export class CustomerComponent implements OnInit {
     this._router.navigate(['customer/signup']);
   }
 
-  goDetails(){
-    this._router.navigate(['customer/details',this.customer.email]);
-  }
 }
 
