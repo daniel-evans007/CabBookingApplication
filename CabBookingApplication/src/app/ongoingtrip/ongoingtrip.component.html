@@ -7,21 +7,8 @@
     <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{customer.customerId}}</span><br>
     <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{customer.username}}</span>
     <hr style="width: 60%; background-color: rgb(228, 225, 225);">
-    <a (click)= "goBookCab()" style="color: grey;" >Book Cab</a>
-    <a (click) = "onGoingTrip()">Ongoing Trips</a>
-    <span class="active" style="font-size: 25px; color: white; margin-top: 5px; margin-left: 15px;">Your Trips</span>
+    <a (click)= "goBookCab()">Book Cab</a>
+    <a (click) = "onGoingTrip()" style="color: white">Ongoing Trips</a>
+    <a (click)= "goTrips()">Your Trips</a>
     <a (click)= "goUpdate()">Update Profile</a>
-</div>
-<div class="main">
-    <table id="customers">
-        <tr>
-          <th>Pick up spot</th>
-          <th>Drop spot</th>
-          <th>Driver Name</th>
-          <th>Cab No.</th>
-          <th>Date</th>
-          <th>Total Bill</th>
-          <th>Status</th>
-        </tr>
-    </table>
 </div>

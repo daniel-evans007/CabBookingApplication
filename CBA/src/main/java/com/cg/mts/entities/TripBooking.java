@@ -1,12 +1,13 @@
 package com.cg.mts.entities;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +19,8 @@ import javax.persistence.Table;
 public class TripBooking {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "trip_Sequence")
+    @SequenceGenerator(name = "trip_Sequence", sequenceName = "TRIP_SEQ", initialValue = 100001)
 	private int tripBookingId;
 	
 	@OneToOne(cascade =  CascadeType.ALL)
@@ -30,8 +33,8 @@ public class TripBooking {
 	
 	private String fromLocation;
 	private String toLocation;
-	private LocalDateTime fromDateTime;
-	private LocalDateTime toDateTime;
+	private String fromDateTime;
+	private String toDateTime;
 	private String status;
 	private float distanceInKm;
 	private float bill;
@@ -41,7 +44,7 @@ public class TripBooking {
 	}
 
 	public TripBooking(int tripBookingId, Customer customer, Driver driver, String fromLocation, String toLocation,
-			LocalDateTime fromDateTime, LocalDateTime toDateTime, String status, float distanceInKm, float bill) {
+			String fromDateTime, String toDateTime, String status, float distanceInKm, float bill) {
 		super();
 		this.tripBookingId = tripBookingId;
 		this.customer = customer;
@@ -95,19 +98,19 @@ public class TripBooking {
 		this.toLocation = toLocation;
 	}
 
-	public LocalDateTime getFromDateTime() {
+	public String getFromDateTime() {
 		return fromDateTime;
 	}
 
-	public void setFromDateTime(LocalDateTime fromDateTime) {
+	public void setFromDateTime(String fromDateTime) {
 		this.fromDateTime = fromDateTime;
 	}
 
-	public LocalDateTime getToDateTime() {
+	public String getToDateTime() {
 		return toDateTime;
 	}
 
-	public void setToDateTime(LocalDateTime toDateTime) {
+	public void setToDateTime(String toDateTime) {
 		this.toDateTime = toDateTime;
 	}
 

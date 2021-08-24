@@ -23,6 +23,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DrivertripsComponent } from './drivertrips/drivertrips.component';
 import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
 import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrips.component';
+import { DatePipe } from '@angular/common';
+import { OngoingtripComponent } from './ongoingtrip/ongoingtrip.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrip
     PagenotfoundComponent,
     DrivertripsComponent,
     BestdriversComponent,
-    AdminviewalltripsComponent],
+    AdminviewalltripsComponent,
+    OngoingtripComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -51,7 +54,7 @@ import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrip
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

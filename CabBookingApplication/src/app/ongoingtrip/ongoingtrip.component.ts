@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
+import { Tripdetails } from '../tripdetails';
 
 @Component({
-  selector: 'app-updatecustomer',
-  templateUrl: './updatecustomer.component.html',
-  styleUrls: ['./updatecustomer.component.css']
+  selector: 'app-ongoingtrip',
+  templateUrl: './ongoingtrip.component.html',
+  styleUrls: ['./ongoingtrip.component.css']
 })
-export class UpdatecustomerComponent implements OnInit {
+export class OngoingtripComponent implements OnInit {
 
   public customer: Customer = new Customer();
+  public trip: Tripdetails = new Tripdetails();
   public email: string;
-  public customerId: number;
-  dateNow: string = "";
 
   constructor(private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router) { }
 
@@ -22,19 +22,13 @@ export class UpdatecustomerComponent implements OnInit {
     this._cservice.getCustomer(this.email)
     .subscribe(data => {
       this.customer = data;
-      this.customerId = this.customer.customerId;
       console.log(this.customer.username);
     },
     error => console.log(error));
   }
 
-  updateCustomer(){
-    this._cservice.updateCustomer(this.customerId,this.customer).subscribe(
-      data=>{
-        this.customer = data;
-        console.log(data);
-      },
-      error => console.log(error));
+  onGoingTrip() {
+    this._router.navigate(['customer/details/ongoingtrip', this.customer.email]);
   }
 
   goTrips(){
@@ -46,17 +40,7 @@ export class UpdatecustomerComponent implements OnInit {
   }
 
   goUpdate(){
-    this._router.navigate(['customer/details/update',this.customer.customerId]);
+    this._router.navigate(['customer/details/update',this.customer.email]);
   }
 
-  public date: Date = new Date();
-
-  showDate() {
-    this.dateNow = this.date.getDate()+"-"+(this.date.getMonth()+1)+"-"+this.date.getFullYear();
-    return this.dateNow;
-  }
-
-  onGoingTrip() {
-    this._router.navigate(['customer/details/ongoingtrip', this.customer.email]);
-  }
 }

@@ -137,7 +137,7 @@ public class AdminService implements IAdminService{
 			List<TripBooking> tripList = new ArrayList<TripBooking>();
 			
 			for(TripBooking trip : iTripBookingRepository.findAll()) {
-				String formatDateTime = trip.getFromDateTime().format(format);
+				String formatDateTime = trip.getFromDateTime();
 				if(formatDateTime.equals(date)){
 					tripList.add(trip);
 				}
@@ -154,7 +154,7 @@ public class AdminService implements IAdminService{
 			List<TripBooking> tripList = new ArrayList<TripBooking>();
 			for(TripBooking trip : iTripBookingRepository.findAll()) {
 				if(trip.getCustomer().getCustomerId() == customerId) {
-					if(trip.getFromDateTime().format(format).equals(fromDate) && trip.getToDateTime().format(format).equals(toDate)) {
+					if(trip.getFromDateTime().equals(fromDate) && trip.getToDateTime().equals(toDate)) {
 						tripList.add(trip);
 					}
 				}

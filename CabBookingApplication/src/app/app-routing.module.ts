@@ -12,6 +12,7 @@ import { DriverComponent } from './driver/driver.component';
 import { DriverprofdetailsComponent } from './driverprofdetails/driverprofdetails.component';
 import { DriversignupComponent } from './driversignup/driversignup.component';
 import { DrivertripsComponent } from './drivertrips/drivertrips.component';
+import { OngoingtripComponent } from './ongoingtrip/ongoingtrip.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TripsComponent } from './trips/trips.component';
 import { UpdateadminComponent } from './updateadmin/updateadmin.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'customer/details/:email', component: CustprofdetailsComponent },
   { path: 'customer/details/trips/:email', component:TripsComponent },
   { path: 'customer/details/update/:email', component: UpdatecustomerComponent},
+  { path: 'customer/details/ongoingtrip/:email', component: OngoingtripComponent},
 
   { path: '**', component: PagenotfoundComponent}
   

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
 import { Tripdetails } from '../tripdetails';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-custprofdetails',
@@ -14,9 +15,10 @@ export class CustprofdetailsComponent implements OnInit {
   public customer: Customer = new Customer();
   public trip: Tripdetails = new Tripdetails();
   public email: string;
+  date: Date = new Date();
   dateNow: string;
 
-  constructor(private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private datePipe: DatePipe, private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
     this.email = this._route.snapshot.params['email'];
@@ -24,6 +26,7 @@ export class CustprofdetailsComponent implements OnInit {
     .subscribe(data => {
       this.customer = data;
       console.log(this.customer.username);
+      this.trip.fromDateTime = this.datePipe.transform(this.date,"yyyy-MM-dd");
     },
     error => console.log(error));
   }
@@ -48,10 +51,16 @@ export class CustprofdetailsComponent implements OnInit {
     this._router.navigate(['customer/details/update',this.customer.email]);
   }
 
-  public date: Date = new Date();
-
-  showDate() {
-    this.dateNow = this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+" "+this.date.getDate()+"-"+(this.date.getMonth()+1)+"-"+this.date.getFullYear();
-    return this.dateNow;
+  onGoingTrip() {
+    this._router.navigate(['customer/details/ongoingtrip', this.customer.email]);
   }
+
+  //public date: Date = new Date();
+
+  // showDate() {
+  //   this.dateNow = this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+" "+this.date.getDate()+"-"+(this.date.getMonth()+1)+"-"+this.date.getFullYear();
+  //   return this.dateNow;
+  // }
+
+
 }

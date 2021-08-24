@@ -40,4 +40,8 @@ export class TripsComponent implements OnInit {
   goUpdate(){
     this._router.navigate(['customer/details/update',this.customer.email]);
   }
+
+  onGoingTrip() {
+    this._router.navigate(['customer/details/ongoingtrip', this.customer.email]);
+  }
 }
