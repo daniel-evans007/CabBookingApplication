@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Admin } from '../admin';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-adminviewalltrips',
@@ -7,9 +10,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminviewalltripsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _adservice: AdminService, private _route: ActivatedRoute, private _router: Router) { }
+
+  public admin: Admin = new Admin();
+  
+  public email: string = "";
 
   ngOnInit(): void {
+    this.email = this._route.snapshot.params['email'];
+    this._adservice.getAdmin(this.email)
+    .subscribe(data => {
+      this.admin = data;
+      console.log(this.admin.username)
+    },
+    error => console.log(error));
   }
 
+  deleteUsers() {
+    this._router.navigate(['admin/details', this.admin.email]);
+  }
+
+  deleteCustomer() {
+
+  }
+
+  deleteDriver() {
+
+  }
+
+  updateAdmin() {
+    this._router.navigate(['admin/details/update', this.admin.email]);
+  }
+
+  allTrips() {
+
+  }
+
+  tripsDateWise() {
+
+  }
+
+  tripsCabWise() {
+
+  }
+
+  tripsCustomerWise() {
+
+  }
+
+  tripsDateRange() {
+
+  }
 }

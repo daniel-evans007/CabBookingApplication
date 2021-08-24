@@ -43,9 +43,9 @@ export class UpdateadminComponent implements OnInit {
   }
 
   allTrips() {
-
+    this._router.navigate(['admin/details/viewalltrips', this.admin.email]);
   }
-
+  
   tripsDateWise() {
 
   }

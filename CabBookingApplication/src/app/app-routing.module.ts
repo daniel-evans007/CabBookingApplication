@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AdminprofdetailsComponent } from './adminprofdetails/adminprofdetails.component';
 import { AdminsignupComponent } from './adminsignup/adminsignup.component';
+import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrips.component';
 import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustprofdetailsComponent } from './custprofdetails/custprofdetails.component';
@@ -11,6 +12,7 @@ import { DriverComponent } from './driver/driver.component';
 import { DriverprofdetailsComponent } from './driverprofdetails/driverprofdetails.component';
 import { DriversignupComponent } from './driversignup/driversignup.component';
 import { DrivertripsComponent } from './drivertrips/drivertrips.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TripsComponent } from './trips/trips.component';
 import { UpdateadminComponent } from './updateadmin/updateadmin.component';
 import { UpdatecustomerComponent } from './updatecustomer/updatecustomer.component';
@@ -29,12 +31,15 @@ const routes: Routes = [
   { path: 'admin/login', component: AdminComponent },
   { path: 'admin/details/:email', component: AdminprofdetailsComponent },
   { path: 'admin/details/update/:email', component: UpdateadminComponent},
-
+  { path: 'admin/details/viewalltrips/:email', component: AdminviewalltripsComponent},
+  
   { path: 'customer/signup', component: CustsignupComponent },
   { path: 'customer/login', component: CustomerComponent },  
   { path: 'customer/details/:email', component: CustprofdetailsComponent },
   { path: 'customer/details/trips/:email', component:TripsComponent },
-  { path: 'customer/details/update/:email', component: UpdatecustomerComponent}
+  { path: 'customer/details/update/:email', component: UpdatecustomerComponent},
+
+  { path: '**', component: PagenotfoundComponent}
   
 
 ];

@@ -32,7 +32,7 @@ public class TripBooking {
 	private String toLocation;
 	private LocalDateTime fromDateTime;
 	private LocalDateTime toDateTime;
-	private boolean status;
+	private String status;
 	private float distanceInKm;
 	private float bill;
 	
@@ -41,7 +41,7 @@ public class TripBooking {
 	}
 
 	public TripBooking(int tripBookingId, Customer customer, Driver driver, String fromLocation, String toLocation,
-			LocalDateTime fromDateTime, LocalDateTime toDateTime, boolean status, float distanceInKm, float bill) {
+			LocalDateTime fromDateTime, LocalDateTime toDateTime, String status, float distanceInKm, float bill) {
 		super();
 		this.tripBookingId = tripBookingId;
 		this.customer = customer;
@@ -111,11 +111,11 @@ public class TripBooking {
 		this.toDateTime = toDateTime;
 	}
 
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

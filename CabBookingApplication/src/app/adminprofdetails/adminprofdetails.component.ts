@@ -11,8 +11,6 @@ import { Driver } from '../driver';
   styleUrls: ['./adminprofdetails.component.css']
 })
 export class AdminprofdetailsComponent implements OnInit {
-
- 
   
   constructor(private _adservice: AdminService, private _route: ActivatedRoute, private _router: Router) { }
 
@@ -49,7 +47,7 @@ export class AdminprofdetailsComponent implements OnInit {
   }
 
   allTrips() {
-
+    this._router.navigate(['admin/details/viewalltrips', this.admin.email]);
   }
 
   tripsDateWise() {

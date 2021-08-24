@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
+import { Tripdetails } from '../tripdetails';
 
 @Component({
   selector: 'app-custprofdetails',
@@ -11,6 +12,7 @@ import { CustomerService } from '../customer.service';
 export class CustprofdetailsComponent implements OnInit {
 
   public customer: Customer = new Customer();
+  public trip: Tripdetails = new Tripdetails();
   public email: string;
   dateNow: string;
 
@@ -22,6 +24,14 @@ export class CustprofdetailsComponent implements OnInit {
     .subscribe(data => {
       this.customer = data;
       console.log(this.customer.username);
+    },
+    error => console.log(error));
+  }
+
+  bookTrip() {
+    this._cservice.bookATrip(this.trip).subscribe(data => {
+      this.trip = data;
+      console.log(this.trip);
     },
     error => console.log(error));
   }
@@ -41,8 +51,7 @@ export class CustprofdetailsComponent implements OnInit {
   public date: Date = new Date();
 
   showDate() {
-    this.dateNow = this.date.getDate()+"-"+(this.date.getMonth()+1)+"-"+this.date.getFullYear();
+    this.dateNow = this.date.getHours()+":"+this.date.getMinutes()+":"+this.date.getSeconds()+" "+this.date.getDate()+"-"+(this.date.getMonth()+1)+"-"+this.date.getFullYear();
     return this.dateNow;
   }
-
 }
