@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
-import { Tripdetails } from '../tripdetails';
+import { TripbookingService } from '../tripbooking.service';
+import { TripBooking } from '../TripBooking';
 
 @Component({
   selector: 'app-ongoingtrip',
@@ -12,10 +13,12 @@ import { Tripdetails } from '../tripdetails';
 export class OngoingtripComponent implements OnInit {
 
   public customer: Customer = new Customer();
-  public trip: Tripdetails = new Tripdetails();
+  public trip: TripBooking = new TripBooking();
+  public triptripBookingId: number;
   public email: string;
 
-  constructor(private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private _cservice: CustomerService, private _route: ActivatedRoute, private _router: Router,
+    private _tripservice: TripbookingService) { }
 
   ngOnInit(): void {
     this.email = this._route.snapshot.params['email'];
@@ -25,6 +28,14 @@ export class OngoingtripComponent implements OnInit {
       console.log(this.customer.username);
     },
     error => console.log(error));
+    
+    this.triptripBookingId = this._route.snapshot.params['tripBookingId'];
+    this._tripservice.getTripByTripId(this.triptripBookingId)
+    .subscribe(data => {
+      this.trip = data;
+      console.log(this.trip);
+      console.log(this.trip.status);
+    })
   }
 
   onGoingTrip() {
@@ -42,5 +53,7 @@ export class OngoingtripComponent implements OnInit {
   goUpdate(){
     this._router.navigate(['customer/details/update',this.customer.email]);
   }
+
+
 
 }

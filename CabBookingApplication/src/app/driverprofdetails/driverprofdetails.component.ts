@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Driver } from '../driver';
 import { DriverService } from '../driver.service';
+import { TripBooking } from '../TripBooking';
 
 @Component({
   selector: 'app-driverprofdetails',
@@ -13,6 +14,7 @@ export class DriverprofdetailsComponent implements OnInit {
   constructor(private _driverservice: DriverService, private _route: ActivatedRoute, private _router: Router) { }
 
   public driver: Driver = new Driver();
+  public trip: TripBooking = new TripBooking();
   public email: string = "";
 
   ngOnInit(): void {
@@ -39,6 +41,10 @@ export class DriverprofdetailsComponent implements OnInit {
 
   goDriver() {
     this._router.navigate(['driver/details/viewdriver', this.driver.email]);
+  }
+
+  onSubmit() {
+
   }
 
 }

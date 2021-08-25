@@ -114,7 +114,7 @@ public class TripBooking {
 		this.toDateTime = toDateTime;
 	}
 
-	public String isStatus() {
+	public String getStatus() {
 		return status;
 	}
 

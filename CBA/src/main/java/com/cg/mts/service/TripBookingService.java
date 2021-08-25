@@ -51,7 +51,7 @@ public class TripBookingService implements ITripBookingService{
 		  trip.setToDateTime(tripBooking.getToDateTime());
 		  trip.setFromLocation(tripBooking.getFromLocation());
 		  trip.setToLocation(tripBooking.getToLocation());
-		  trip.setStatus(tripBooking.isStatus());
+		  trip.setStatus(tripBooking.getStatus());
 		 
 		  return iTripBookingRepository.save(trip);
 	}
@@ -102,6 +102,17 @@ public class TripBookingService implements ITripBookingService{
 		}else {
 			throw new CustomerNotFoundException("Customer Not Found");
 		}
+	}
+
+	@Override
+	public Optional<TripBooking> getTripById(int id) {
+		return iTripBookingRepository.findById(id);
+	}
+
+	@Override
+	public Optional<TripBooking> getTripByStatus() {
+		String status = "notAccepted";
+		return iTripBookingRepository.findTripByStatus(status);
 	}
 
 }

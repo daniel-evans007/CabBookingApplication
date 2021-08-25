@@ -17,7 +17,7 @@
 		<form #signupForm="ngForm" (ngSubmit)="bookTrip()">
 			<h2>BOOK CAB</h2>
 			<div class="form-group" >
-				<input type="text" class="form-control" name="customerId" placeholder="Pick Up Location" required="required" value={{customer.customerId}} disabled #customerId="ngModel" [(ngModel)]="customer.customerId">
+				<input type="text" class="form-control" name="customerId" placeholder="Pick Up Location" required="required" value={{customer.customerId}} disabled #customerId="ngModel" [(ngModel)]= "customer.customerId">
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" name="pickup" placeholder="Pick Up Location" required="required" #pickup = "ngModel" [(ngModel)] = "trip.fromLocation">
@@ -26,7 +26,7 @@
 				<input type="text" class="form-control" name="drop" placeholder="Drop Location" required="required" #drop = "ngModel" [(ngModel)] = "trip.toLocation">
 			</div>
 			<div class="form-group">
-				<input type="datetime" class="form-control" id="start" name="tripstart" value={{trip.fromDateTime}} #tripstart = "ngModel" [(ngModel)] = "trip.fromDateTime">
+				<input type="datetime" class="form-control" id="start" name="tripstart" disabled value={{trip.fromDateTime}} #tripstart = "ngModel" [(ngModel)] = "trip.fromDateTime">
 			</div> 
 			<div class="form-group">
 				<label for="cars">Choose Cab:</label>
@@ -39,7 +39,7 @@
 				</select>
 			</div>        
 			<div class="form-group">
-				<button type="submit" class="btn btn-success btn-lg btn-block" style=" background-color: #222;" (click) = "onGoingTrip()">Book Now</button>
+				<button type="submit" class="btn btn-success btn-lg btn-block" style=" background-color: #222;">Book Now</button>
 			</div>
 		</form>
 	</div>

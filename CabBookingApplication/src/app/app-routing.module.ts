@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'customer/details/:email', component: CustprofdetailsComponent },
   { path: 'customer/details/trips/:email', component:TripsComponent },
   { path: 'customer/details/update/:email', component: UpdatecustomerComponent},
-  { path: 'customer/details/ongoingtrip/:email', component: OngoingtripComponent},
+  { path: 'customer/details/ongoingtrip/:email/:tripBookingId', component: OngoingtripComponent},
 
   { path: '**', component: PagenotfoundComponent}
   

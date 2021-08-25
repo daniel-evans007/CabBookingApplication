@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
-import { Tripdetails } from '../tripdetails';
+import { TripBooking } from '../TripBooking';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 export class CustprofdetailsComponent implements OnInit {
 
   public customer: Customer = new Customer();
-  public trip: Tripdetails = new Tripdetails();
+  public trip: TripBooking = new TripBooking();
   public email: string;
   date: Date = new Date();
   dateNow: string;
@@ -34,7 +34,10 @@ export class CustprofdetailsComponent implements OnInit {
   bookTrip() {
     this._cservice.bookATrip(this.trip).subscribe(data => {
       this.trip = data;
+      this.trip.status = "notAccepted";
+      this.trip.customer = this.customer;
       console.log(this.trip);
+      this._router.navigate(['customer/details/ongoingtrip', this.customer.email, this.trip.tripBookingId]);
     },
     error => console.log(error));
   }

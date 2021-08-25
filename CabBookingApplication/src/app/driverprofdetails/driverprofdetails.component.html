@@ -7,11 +7,14 @@
     <span style="color: white; font-size: 22px;padding: 6px 8px 6px 16px; margin-left: 10px;">Id: {{driver.driverId}}</span><br>
     <span style="color: white; font-size: 25px;padding: 6px 8px 6px 16px; margin-left: 10px;">{{driver.username}}</span>
     <hr style="width: 60%; background-color: rgb(228, 225, 225);">
-    <a (click)= "goDriver()" style="color: white;">View Driver</a>
+    <a (click)= "goDriver()" style="color: white;">Driver</a>
     <a (click)= "goTrips()">Total Trips</a>
     <a (click)= "goUpdate()">Update Profile</a>
     <a (click)= "bestDrivers()">Best Drivers</a>
 </div>
 
-<div class="main">    
+<div class="main">
+    <form style="margin-left: 15%;" (ngSubmit)="onSubmit()" #form="ngForm">
+        <button>Accept</button>
+    </form>   
 </div>

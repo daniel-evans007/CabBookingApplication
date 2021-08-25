@@ -1,6 +1,7 @@
 package com.cg.mts.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,4 +14,6 @@ public interface ITripBookingService {
 	public ResponseEntity<String> deleteTripBooking(int id);
 	public List<TripBooking> viewAllTripsCustomer(long customerId);
 	public String calculateBill(long customerId);
+	public Optional<TripBooking> getTripById(int id);
+	public Optional<TripBooking> getTripByStatus();
 }

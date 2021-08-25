@@ -1,6 +1,7 @@
 package com.cg.mts.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -66,5 +67,17 @@ public class TripBookingController {
 	public String calculateBill(@ApiParam(value = "Customer ID from which Trip Bill will be retrieved", required = true) @PathVariable("id") long customerId) {
 		// TODO Auto-generated method stub
 		return tripBookingService.calculateBill(customerId);
+	}
+	
+	@ApiOperation(value = "Get Trip by ID")
+	@GetMapping("/gettrip/{id}")
+	public Optional<TripBooking> getTripById(@ApiParam(value = "Trip ID by which Ongoing Trip Details will be retrieved", required = true) @PathVariable("id") int id) {
+		return tripBookingService.getTripById(id);
+	}
+	
+	@ApiOperation(value = "Get Trip by Status")
+	@GetMapping("/gettripstatus")
+	public Optional<TripBooking> getTripByStatus() {
+		return tripBookingService.getTripByStatus();
 	}
 }
