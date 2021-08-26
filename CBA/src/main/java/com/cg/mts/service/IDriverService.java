@@ -17,4 +17,5 @@ public interface IDriverService {
 	public Driver viewDriver(long driverId);
 	public Driver loginDriver(Driver driver);
 	public Driver getDriver(String email);
+	public List<Driver> getAllDrivers();
 }

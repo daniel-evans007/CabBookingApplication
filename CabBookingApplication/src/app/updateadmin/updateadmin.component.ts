@@ -46,8 +46,8 @@ export class UpdateadminComponent implements OnInit {
     this._router.navigate(['admin/details/viewalltrips', this.admin.email]);
   }
   
-  tripsDateWise() {
-
+  getAllDrivers() {
+    this._router.navigate(['admin/details/viewalldrivers', this.admin.email]);
   }
 
   tripsCabWise() {

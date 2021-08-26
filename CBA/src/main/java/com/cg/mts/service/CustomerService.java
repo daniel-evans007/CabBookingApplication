@@ -60,24 +60,16 @@ public class CustomerService implements ICustomerService{
 
 	@Override
 	public ResponseEntity<Customer> deleteCustomer(long id) {
-		if(flag == 1) {
 			Customer cust = (Customer) customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer not found"));
 			this.customerRepository.delete(cust);
 			return ResponseEntity.ok().build();
-		}else {
-			throw new UserNotLoginException();
-		}
 	}
 
 	@Override
 	public List<Customer> viewCustomers() {
 		// TODO Auto-generated method stub
-		if(flag == 1) {
 			List<Customer> customerList = customerRepository.findAll();
 			return customerList;
-		}else {
-			throw new UserNotLoginException();
-		}
 	}
 
 	@Override

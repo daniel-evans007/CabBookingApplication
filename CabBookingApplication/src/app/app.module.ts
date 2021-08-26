@@ -25,6 +25,10 @@ import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
 import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrips.component';
 import { DatePipe } from '@angular/common';
 import { OngoingtripComponent } from './ongoingtrip/ongoingtrip.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AdminviewdriversComponent } from './adminviewdrivers/adminviewdrivers.component';
+import { AdminviewcustomersComponent } from './adminviewcustomers/adminviewcustomers.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { OngoingtripComponent } from './ongoingtrip/ongoingtrip.component';
     DrivertripsComponent,
     BestdriversComponent,
     AdminviewalltripsComponent,
-    OngoingtripComponent],
+    OngoingtripComponent,
+    HomeComponent,
+    LoginComponent,
+    AdminviewdriversComponent,
+    AdminviewcustomersComponent],
   imports: [
     BrowserModule,
     FormsModule,

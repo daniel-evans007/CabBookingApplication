@@ -86,4 +86,10 @@ public class DriverController {
 	public Driver getDriver(@ApiParam(value = "Email by which Driver details will be retrieved", required = true) @PathVariable("email") String email) {
 		return driverService.getDriver(email);
 	}
+	
+	@ApiOperation(value = "Get all Drivers")
+	@GetMapping("/getalldrivers")
+	public List<Driver> getAllDrivers() {
+		return driverService.getAllDrivers();
+	}
 }

@@ -65,15 +65,10 @@ public class DriverService implements IDriverService{
 
 	@Override
 	public ResponseEntity<Driver> deleteDriver(long id) {
-		// TODO Auto-generated method stub
-		if(flag == 1) {
 			Driver dvr1 = null;
 			dvr1 = iDriverRepository.findById(id).orElseThrow(()-> new DriverNotFoundException("Driver not found"));
 			this.iDriverRepository.delete(dvr1);
 			return ResponseEntity.ok().build();
-		}else {
-			throw new UserNotLoginException();
-		}
 	}
 
 	@Override
@@ -105,6 +100,12 @@ public class DriverService implements IDriverService{
 		else {
 			throw new UserNotLoginException();
 		}
+	}
+
+	@Override
+	public List<Driver> getAllDrivers() {
+		List<Driver> allDrivers = iDriverRepository.findAll();
+		return allDrivers;
 	}
 
 }

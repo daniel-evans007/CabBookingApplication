@@ -34,12 +34,22 @@ export class AdminprofdetailsComponent implements OnInit {
 
   }
 
-  deleteCustomer() {
-
+  deleteCustomer(customerId: number) {
+    console.log(this.customer.customerId);
+    this._adservice.removeCustomer(customerId).subscribe(
+      data => {
+        console.log('deleted response', data);
+      }
+    )
   }
 
-  deleteDriver() {
-
+  deleteDriver(driverId: number) {
+    console.log(this.driver.driverId)
+    this._adservice.removeDriver(driverId).subscribe(
+      data => {
+        console.log('deleted response', data);
+      }
+    );
   }
 
   updateAdmin() {
@@ -50,12 +60,12 @@ export class AdminprofdetailsComponent implements OnInit {
     this._router.navigate(['admin/details/viewalltrips', this.admin.email]);
   }
 
-  tripsDateWise() {
-
+  getAllDrivers() {
+    this._router.navigate(['admin/details/viewalldrivers', this.admin.email]);
   }
 
-  tripsCabWise() {
-
+  getAllCustomers() {
+    this._router.navigate(['admin/details/viewallcustomers', this.admin.email]);
   }
 
   tripsCustomerWise() {

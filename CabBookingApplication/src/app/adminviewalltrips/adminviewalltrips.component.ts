@@ -30,28 +30,20 @@ export class AdminviewalltripsComponent implements OnInit {
     this._router.navigate(['admin/details', this.admin.email]);
   }
 
-  deleteCustomer() {
-
-  }
-
-  deleteDriver() {
-
-  }
-
   updateAdmin() {
     this._router.navigate(['admin/details/update', this.admin.email]);
   }
 
   allTrips() {
-
+    this._router.navigate(['admin/details/viewalltrips', this.admin.email]);
   }
 
-  tripsDateWise() {
-
+  getAllDrivers() {
+    this._router.navigate(['admin/details/viewalldrivers', this.admin.email]);
   }
 
-  tripsCabWise() {
-
+  getAllCustomers() {
+    this._router.navigate(['admin/details/viewallcustomers', this.admin.email]);
   }
 
   tripsCustomerWise() {
