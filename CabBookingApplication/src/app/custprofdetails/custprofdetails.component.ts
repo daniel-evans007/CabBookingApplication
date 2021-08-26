@@ -14,6 +14,7 @@ export class CustprofdetailsComponent implements OnInit {
 
   public customer: Customer = new Customer();
   public trip: TripBooking = new TripBooking();
+
   public email: string;
   date: Date = new Date();
   dateNow: string;
@@ -31,11 +32,12 @@ export class CustprofdetailsComponent implements OnInit {
     error => console.log(error));
   }
 
-  bookTrip() {
-    this._cservice.bookATrip(this.trip).subscribe(data => {
+  bookTrip(customer: Customer) {
+      //this.trip.customer.customerId = customerId;
+      
+      this.trip.status = "Accepted";
+      this._cservice.bookATrip(this.trip).subscribe(data => {
       this.trip = data;
-      this.trip.status = "notAccepted";
-      this.trip.customer = this.customer;
       console.log(this.trip);
       this._router.navigate(['customer/details/ongoingtrip', this.customer.email, this.trip.tripBookingId]);
     },

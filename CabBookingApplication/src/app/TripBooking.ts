@@ -1,7 +1,8 @@
 import { Customer } from "./customer";
+import { Deserializable } from "./deserializable.model";
 import { Driver } from "./driver";
 
-export class TripBooking {
+export class TripBooking implements Deserializable {
 
     tripBookingId: number;
     customer: Customer;
@@ -12,5 +13,13 @@ export class TripBooking {
     toDateTime: string;
     status: string = "notAccepted";
     distanceInKm: number;
-    bill: number;  
+    bill: number;
+    
+    constructor() { }
+    
+    deserialize(input: any): this {
+        Object.assign(this, input);
+        this.customer = new Customer().deserialize(input.customer);
+        return this;
+    }
 }

@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminprofdetailsComponent } from './adminprofdetails/adminprofdetails.component';
 import { AdminsignupComponent } from './adminsignup/adminsignup.component';
 import { AdminviewalltripsComponent } from './adminviewalltrips/adminviewalltrips.component';
+import { AdminviewcustomersComponent } from './adminviewcustomers/adminviewcustomers.component';
 import { AdminviewdriversComponent } from './adminviewdrivers/adminviewdrivers.component';
 import { BestdriversComponent } from './bestdrivers/bestdrivers.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'admin/details/update/:email', component: UpdateadminComponent},
   { path: 'admin/details/viewalltrips/:email', component: AdminviewalltripsComponent},
   { path: 'admin/details/viewalldrivers/:email', component: AdminviewdriversComponent},
+  { path: 'admin/details/viewallcustomers/:email', component: AdminviewcustomersComponent},
 
   
   { path: 'customer/signup', component: CustsignupComponent },
